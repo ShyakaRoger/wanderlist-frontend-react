@@ -1,0 +1,16 @@
+.explore-background {
+  background-image: url('/images/Table-Mountain-SA.avif');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding-top: 5rem;
+}
+
+.explore-container {
+  background-color: rgba(160, 157, 157, 0.5);
+  color: rgb(29, 25, 25);
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 2rem;
+  border-radius: 12px;
+}

@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1d3557;
+  color: white;
+  padding: 1rem 2rem;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* ✅ Refined font */
+}
+
+.nav-logo {
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a {
+  margin-left: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links .logout-btn {
+  margin-left: 1rem;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+}
