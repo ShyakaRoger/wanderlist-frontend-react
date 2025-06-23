@@ -43,7 +43,7 @@ function AuthProvider({ children }) {
   // Return the AuthContext provider with the value of user, login, and logout functions
   return (
     <AuthContext.Provider value={{ user, login, logout }}>
-      {children}  // Render child components that are wrapped by this AuthProvider
+      {children}  
     </AuthContext.Provider>
   );
 }

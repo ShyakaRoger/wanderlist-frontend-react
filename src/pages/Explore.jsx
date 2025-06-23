@@ -10,15 +10,16 @@ function Explore() {
   useEffect(() => {
     async function fetchDestinations() {
       try {
+        // Fetch all destinations (public and private)
         const data = await getData('/api/destinations/public');
-        setDestinations(data);
+        setDestinations(data);  // Set all destinations in the state
         setLoading(false);
       } catch (err) {
         console.error('Failed to load destinations');
       }
     }
 
-    fetchDestinations();
+    fetchDestinations();  // Fetch data on component mount
   }, []);
 
   return (

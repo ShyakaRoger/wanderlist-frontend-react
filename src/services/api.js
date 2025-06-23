@@ -82,4 +82,4 @@ const deleteData = (endpoint) => {
 };
 
 // Export all functions for use in other parts of the app
-export {getData,getProtectedData,postData,putData,deleteData};
+export { getData, getProtectedData, postData, putData, deleteData };
