@@ -5,11 +5,11 @@
   background-color: #1d3557;
   color: white;
   padding: 1rem 2rem;
-  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* ✅ Refined font */
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
 }
 
 .nav-logo {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: white;
   text-decoration: none;
 }

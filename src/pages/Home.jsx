@@ -1,31 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import DestinationList from '../components/DestinationList';
 import { getProtectedData } from '../services/api';
-import { useAuth } from '../context/AuthContext'; // ✅ added
+import { useAuth } from '../context/AuthContext'; // Importing the authentication context
 import '../styles/Home.css';
 
 function Home() {
-  const { user } = useAuth(); // ✅ detect if logged in
+  // Access the user from the AuthContext to check if the user is logged in
+  const { user } = useAuth();
+
+  // State for holding the destinations data and loading state
   const [destinations, setDestinations] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // useEffect hook that runs when the component mounts or when the user state changes
   useEffect(() => {
-  if (!user || !localStorage.getItem('token')) return; // ✅ skip if not logged in
+    // If there is no user or no token in localStorage, skip fetching data
+    if (!user || !localStorage.getItem('token')) return;
 
-  async function fetchAllDestinations() {
-    try {
-      const data = await getProtectedData('/api/destinations');
-      setDestinations(data);
-      setLoading(false);
-    } catch (err) {
-      console.log('Error loading destinations');
+    // Define an asynchronous function to fetch destinations data
+    async function fetchAllDestinations() {
+      try {
+        // Fetch data from a protected route that requires authentication
+        const data = await getProtectedData('/api/destinations');
+        
+        // Set the destinations data in state once fetched
+        setDestinations(data);
+        
+        // Set loading to false once data is fetched
+        setLoading(false);
+      } catch (err) {
+        // Handle error if the request fails
+        console.log('Error loading destinations');
+      }
     }
-  }
 
-  fetchAllDestinations();
-}, [user]);
+    // Call the fetch function to load destinations
+    fetchAllDestinations();
+  }, [user]);  // This effect depends on the user state (runs again when user changes)
 
-  // ✅ Logged-out view: scenic hero section
+  // If the user is not logged in, show the scenic hero section
   if (!user) {
     return (
       <div className="hero-image">
@@ -37,11 +50,11 @@ function Home() {
     );
   }
 
-  // ✅ Logged-in view: show destinations
+  // If the user is logged in, show the destinations list
   return (
     <div className="page-container">
       <h2>All Destinations</h2>
-      {loading ? <p>Loading...</p> : <DestinationList destinations={destinations} />}
+      {<DestinationList destinations={destinations} />}
     </div>
   );
 }
