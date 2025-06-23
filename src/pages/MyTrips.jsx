@@ -6,12 +6,12 @@ import '../styles/MyTrips.css';
 
 function MyTrips() {
   const [destinations, setDestinations] = useState([]);
+  const [selectedDest, setSelectedDest] = useState(null);
 
   useEffect(() => {
     async function fetchMyTrips() {
       try {
-        const all = await getProtectedData('/api/destinations');
-        const myTrips = all.filter(dest => dest.user); // optionally compare with current user ID
+        const myTrips = await getProtectedData('/api/destinations');
         setDestinations(myTrips);
       } catch (err) {
         console.log('Failed to fetch user trips');
@@ -25,11 +25,28 @@ function MyTrips() {
     setDestinations([...destinations, newDest]);
   }
 
+  function updateTrip(updated) {
+    const updatedList = destinations.map(dest =>
+      dest._id === updated._id ? updated : dest
+    );
+    setDestinations(updatedList);
+  }
+
   return (
     <div className="page-container">
       <h2>My Trips</h2>
-      <DestinationForm onAdd={addToList} />
-      <DestinationList destinations={destinations} isOwner={true} setDestinations={setDestinations} />
+      <DestinationForm
+        onAdd={addToList}
+        onUpdate={updateTrip}
+        selectedDest={selectedDest}
+        clearSelected={() => setSelectedDest(null)}
+      />
+      <DestinationList
+        destinations={destinations}
+        isOwner={true}
+        setDestinations={setDestinations}
+        setSelectedDest={setSelectedDest}
+      />
     </div>
   );
 }

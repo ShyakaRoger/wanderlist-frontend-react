@@ -80,7 +80,7 @@ const deleteData = (endpoint) => {
     });
 };
 
-// ✅ Export all at the end
+// Export all at the end
 export {
   getData,
   getProtectedData,

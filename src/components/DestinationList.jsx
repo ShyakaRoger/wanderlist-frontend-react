@@ -2,7 +2,7 @@ import React from 'react';
 import { deleteData } from '../services/api';
 import '../styles/DestinationList.css';
 
-function DestinationList({ destinations, isOwner = false, setDestinations }) {
+function DestinationList({ destinations, isOwner = false, setDestinations, setSelectedDest }) {
   async function handleDelete(id) {
     const confirm = window.confirm('Are you sure you want to delete this destination?');
     if (!confirm) return;
@@ -34,8 +34,8 @@ function DestinationList({ destinations, isOwner = false, setDestinations }) {
 
           {isOwner && (
             <div className="card-actions">
-              {/* Optional edit functionality here later */}
               <button onClick={() => handleDelete(dest._id)}>Delete</button>
+              <button onClick={() => setSelectedDest(dest)}>Edit</button>
             </div>
           )}
         </div>

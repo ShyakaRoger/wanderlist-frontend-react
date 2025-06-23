@@ -5,9 +5,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
-  align-items: flex-start;     /* ✅ Push content to the top */
+  align-items: flex-start;     
   justify-content: center;
-  padding-top: 100px;          /* ✅ Adjust this as needed */
+  padding-top: 100px;          
 }
 
 .hero-text {

@@ -1,12 +1,35 @@
-# React + Vite
+![Wanderlist screenshot](<Screenshot 2025-06-22 at 10.21.38 PM.png>)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Wanderlist
 
-Currently, two official plugins are available:
+**Wanderlist** is a full-stack travel bucket list application built with the **MERN stack**. Users can sign up, log in, and keep track of the destinations they've visited or want to explore. The app also allows exploring trips shared by others, displayed on a world map.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- User authentication using JWT
+- Create, read, update, and delete (CRUD) trips
+- Add tags and descriptions to destinations
+- Public Explore page to view shared trips
+- Background imagery to enhance travel feel from [https://unsplash.com/](#)
+- Responsive, clean UI
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+### Frontend
+- React
+- React Router
+- Fetch API
+- CSS 
+- Vite
+
+### Backend
+- Node.js
+- Express
+- MongoDB + Mongoose
+- JWT (JSON Web Token)
+- Dotenv for environment configs
+
+
+
+
+
