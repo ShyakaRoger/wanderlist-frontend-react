@@ -6,7 +6,7 @@ import Register from './pages/Register';
 import MyTrips from './pages/MyTrips';
 import Explore from './pages/Explore';
 import NotFound from './pages/NotFound';
-import Navbar from './components/Navbar';
+import Navbar from './components/NavBar';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
 
