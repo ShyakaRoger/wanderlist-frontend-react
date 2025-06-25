@@ -1,6 +1,6 @@
 import React from 'react';
 import { deleteData } from '../services/api';
-import '../styles/DestinationList.css';
+import '../styles/destinationList.css';
 
 function DestinationList({ destinations, isOwner = false, setDestinations, onEdit }) {
   // Function to handle deleting a destination
