@@ -33,7 +33,7 @@ function About() {
         <section className="creator">
           <h2>Meet the Creator</h2>
           <p>
-            I’m Roger Shyaka, a Full Stack Developer passionate about building intuitive, user-focused applications that solve real-world problems. As part of my ongoing training at General Assembly, I’m actively developing Wanderlist — a full-stack travel app built from the ground up using agile workflows and collaborative development practices. This project highlights my current proficiency with modern web technologies, along with my ability to think critically, design with intention, and deliver polished, user-centered applications that are ready for real-world use.
+            I’m Roger Shyaka, a Full Stack Developer passionate about turning bold ideas into polished, user-centered web applications. Currently building Wanderlist, a full-stack travel app developed during my journey at General Assembly, where I blend modern technologies, agile collaboration, and purposeful design to create engaging digital experiences that inspire exploration and connection.
           </p>
         </section>
       </div>
