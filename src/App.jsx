@@ -8,11 +8,11 @@ import Register from './pages/Register';
 import MyTrips from './pages/MyTrips';
 import Explore from './pages/Explore';
 import About from './pages/About';
-import TripDetails from './pages/TripDetails';
+import TripDetails from './pages/TripDetails'; 
 import NotFound from './pages/NotFound';
 
 // Components
-import Navbar from './components/NavBar';
+import NavBar from './components/NavBar'; 
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -40,7 +40,7 @@ function App() {
           }
         />
 
-        {/* Fallback */}
+        {/* Fallback Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
 
