@@ -19,7 +19,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 function App() {
   return (
     <>
-      <Navbar />
+      <NavBar />
 
       <Routes>
         {/* Public Routes */}
