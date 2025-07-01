@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import DestinationList from '../components/DestinationList';
+import { Link } from 'react-router-dom';
 import { getData } from '../services/api';
 import '../styles/Explore.css';
 
@@ -10,23 +10,56 @@ function Explore() {
   useEffect(() => {
     async function fetchDestinations() {
       try {
-        // Fetch all destinations (public and private)
         const data = await getData('/api/destinations/public');
-        setDestinations(data);  // Set all destinations in the state
-        setLoading(false);
+        setDestinations(data);
       } catch (err) {
         console.error('Failed to load destinations');
+      } finally {
+        setLoading(false);
       }
     }
 
-    fetchDestinations();  // Fetch data on component mount
+    fetchDestinations();
   }, []);
 
   return (
     <div className="explore-background">
       <div className="explore-container">
         <h2>Explore Trips</h2>
-        {loading ? <p>Loading...</p> : <DestinationList destinations={destinations} />}
+
+        {loading ? (
+          <p>Loading...</p>
+        ) : destinations.length === 0 ? (
+          <p>No trips to show.</p>
+        ) : (
+          <div className="explore-list">
+            {destinations.map((trip) => (
+              <div key={trip._id} className="explore-card">
+                {trip.imageUrl ? (
+                  <img
+                    src={trip.imageUrl}
+                    alt={trip.name}
+                    className="explore-image"
+                  />
+                ) : (
+                  <p><em>No image available</em></p>
+                )}
+
+                <h3>{trip.name}</h3>
+                <p><strong>Location:</strong> {trip.location}</p>
+                <p><strong>Priority:</strong> {trip.priority}</p>
+
+                {trip.user?.username && (
+                  <p><strong>Posted by:</strong> {trip.user.username}</p>
+                )}
+
+                <Link to={`/trips/${trip._id}`}>
+                  <button className="view-button">View</button>
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -5,8 +5,16 @@ import '../styles/Form.css';  // Importing styles for the form
 import '../styles/AuthBackground.css';  // Importing background styles for authentication
 
 function Register() {
-  // State to store form inputs for username, email, and password
-  const [form, setForm] = useState({ username: '', email: '', password: '' });
+  // State to store form inputs including personal and login details
+  const [form, setForm] = useState({
+    surname: '',
+    givenName: '',
+    dob: '',
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
 
   // State to store any error messages
   const [error, setError] = useState('');
@@ -22,12 +30,25 @@ function Register() {
     evt.preventDefault();  // Prevent the default form submission behavior
     setError('');  // Reset any previous error messages
 
+    // Check if passwords match before proceeding
+    if (form.password !== form.confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+
     try {
       // Make a POST request to the backend to register the user
       const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/auth/register`, {
         method: 'POST',  // Use POST method to send the form data
         headers: { 'Content-Type': 'application/json' },  // Set the content type as JSON
-        body: JSON.stringify(form)  // Convert form data to a JSON string
+        body: JSON.stringify({
+          surname: form.surname,
+          givenName: form.givenName,
+          dob: form.dob,
+          username: form.username,
+          email: form.email,
+          password: form.password
+        })  // Only send necessary fields to the server
       });
 
       // Parse the response from the server
@@ -50,7 +71,7 @@ function Register() {
     }
   }
 
-  // Function to handle changes in the form fields (username, email, password)
+  // Function to handle changes in the form fields (surname, given name, etc.)
   function handleChange(evt) {
     setForm({ ...form, [evt.target.name]: evt.target.value });  // Update the respective field in form state
   }
@@ -64,13 +85,35 @@ function Register() {
         {/* If there is an error, display it */}
         {error && <p className="form-error">{error}</p>}
 
-        {/* Input fields for username, email, and password */}
+        {/* Input fields for surname, given name, date of birth, username, email, password */}
+        <input
+          name="surname"
+          placeholder="Surname"
+          value={form.surname}
+          onChange={handleChange}
+          required  // Ensure the field is filled out before submitting
+        />
+        <input
+          name="givenName"
+          placeholder="Given Name"
+          value={form.givenName}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="dob"
+          type="date"
+          placeholder="Date of Birth"
+          value={form.dob}
+          onChange={handleChange}
+          required
+        />
         <input
           name="username"
           placeholder="Username"
           value={form.username}
           onChange={handleChange}
-          required  // Ensure the field is filled out before submitting
+          required
         />
         <input
           name="email"
@@ -78,7 +121,7 @@ function Register() {
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
-          required  // Ensure the field is filled out before submitting
+          required
         />
         <input
           name="password"
@@ -86,7 +129,15 @@ function Register() {
           placeholder="Password"
           value={form.password}
           onChange={handleChange}
-          required  // Ensure the field is filled out before submitting
+          required
+        />
+        <input
+          name="confirmPassword"
+          type="password"
+          placeholder="Confirm Password"
+          value={form.confirmPassword}
+          onChange={handleChange}
+          required
         />
 
         {/* Submit button for the registration form */}

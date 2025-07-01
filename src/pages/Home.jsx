@@ -11,7 +11,7 @@ function Home() {
     async function fetchDestinations() {
       try {
         const data = await getData('/api/destinations/public');
-        setDestinations(data);  // Set public destinations
+        setDestinations(data);  // Settin public destinations
         setLoading(false);
       } catch (err) {
         console.error('Failed to load destinations');
@@ -25,7 +25,7 @@ function Home() {
     <div className="home-container">
       <div className="hero-image">
         <div className="hero-text">
-          <h1>Welcome to Wanderlist</h1>
+          <h1>Welcome to WanderList</h1>
           <p>Explore the world. Discover new places. Share your adventures.</p>
         </div>
       </div>

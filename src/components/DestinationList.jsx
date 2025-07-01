@@ -3,7 +3,6 @@ import { deleteData } from '../services/api';
 import '../styles/destinationList.css';
 
 function DestinationList({ destinations, isOwner = false, setDestinations, onEdit }) {
-  // Function to handle deleting a destination
   const handleDelete = async (id) => {
     const confirm = window.confirm('Are you sure you want to delete this destination?');
     if (!confirm) return;
@@ -11,7 +10,7 @@ function DestinationList({ destinations, isOwner = false, setDestinations, onEdi
     try {
       await deleteData(`/api/destinations/${id}`);
       const updated = destinations.filter(d => d._id !== id);
-      setDestinations(updated);  // Update the state with the remaining destinations
+      setDestinations(updated);
     } catch (err) {
       alert('Failed to delete destination.');
     }
@@ -23,6 +22,11 @@ function DestinationList({ destinations, isOwner = false, setDestinations, onEdi
         <div className="destination-card" key={dest._id}>
           <h3>{dest.name}</h3>
           <p><strong>Location:</strong> {dest.location}</p>
+
+          {dest.user?.username && (
+            <p><strong>Posted by:</strong> {dest.user.username}</p>
+          )}
+
           {dest.description && <p>{dest.description}</p>}
           {dest.tags?.length > 0 && (
             <p><strong>Tags:</strong> {dest.tags.join(', ')}</p>

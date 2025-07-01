@@ -1,14 +1,15 @@
 .auth-background {
-  background-image: url('/public/images/Table-Mountain-SA.avif');
+  background-image: url('https://images.unsplash.com/photo-1516916201233-fbcc63bf5945?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw0NGNCVWpTd2pETXx8ZW58MHx8fHx8');
   height: 100vh;
-  background-size: cover;
   background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
   display: flex;
-  align-items: center;
+  align-items: flex-start;     
   justify-content: center;
-  padding: 1rem;
+  padding-top: 100px;          
 }
+
 
 .auth-form-container {
   background-color: rgba(0, 0, 0, 0.5); 

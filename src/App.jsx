@@ -1,31 +1,49 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+
+// Pages
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import MyTrips from './pages/MyTrips';
 import Explore from './pages/Explore';
+import About from './pages/About';
+import TripDetails from './pages/TripDetails';
 import NotFound from './pages/NotFound';
+
+// Components
 import Navbar from './components/NavBar';
-import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
     <>
       <Navbar />
+
       <Routes>
+        {/* Public Routes */}
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/trips/:id" element={<TripDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/my-trips" element={
-          <ProtectedRoute>
-            <MyTrips />
-          </ProtectedRoute>
-        } />
+
+        {/* Protected Route */}
+        <Route
+          path="/my-trips"
+          element={
+            <ProtectedRoute>
+              <MyTrips />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Fallback */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+
       <Footer />
     </>
   );
